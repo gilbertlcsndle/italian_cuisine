@@ -509,7 +509,7 @@ img {
 
 #mu-counter {
   background-attachment: fixed;
-  background-image: url("counter-bg.jpg");
+  background-image: image-url("counter-bg.jpg");
   background-size: cover;
   display: inline;
   float: left;
@@ -1000,7 +1000,7 @@ RESERVATION SECTION
 ====================*/
 
 #mu-client-testimonial {
-  background-image: url("testimonial-bg.jpg");
+  background-image: image-url("testimonial-bg.jpg");
   background-size: cover;
   background-attachment: fixed;
   display: inline;
