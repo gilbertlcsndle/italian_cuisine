@@ -1,0 +1,6 @@
+<% if @error.nil? %>
+  $('#newsletter_form').trigger('reset');
+  $('.newsletter-area').prepend('<div class="alert alert-success">You have successfully subscribed with your email address</div>');
+<% else %>
+  $('.newsletter-area').prepend('<div class="alert alert-danger">There was an error registering you.</div>');
+<% end %>
