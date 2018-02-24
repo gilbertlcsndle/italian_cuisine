@@ -4,7 +4,7 @@ class SubscribersController < ApplicationController
     begin
       gibbon.lists(ENV['MAILCHIMP_LIST_ID']).members.create(
         body: {
-          email_address: params[:email],
+          email_address: params[:subscribers][:email],
           status: "subscribed" })
     rescue Gibbon::MailChimpError => e
       @error = e
