@@ -7,7 +7,9 @@
         <div class="newsletter-area">
           <p>Subscribe to our newsletter!</p>
           <%= form_tag subscribers_path, remote: true, id: 'newsletter_form' do %>
-            <%= text_field_tag :email, nil, class: 'form-control' %>
+            <%= email_field_tag :email, nil, class: 'form-control' %>
+            <div id='email_validation_msg'>
+            </div>
             <%= submit_tag 'Submit', class: 'btn btn-primary' %>
           <% end %>
         </div>
