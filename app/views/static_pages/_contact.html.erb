@@ -16,27 +16,34 @@
               <div class="col-md-6">
                 <div class="mu-contact-left">
                   <!-- Email message div -->
-                  <div id="form-messages"></div>
+                  <div id="form-messages">
+                  </div>
                   <!-- Start contact form -->
-                  <form id="ajax-contact" method="post" action="mailer.php" class="mu-contact-form">
+                  <%= form_for @contact,
+                               html: { id: "ajax-contact",
+                                       class: "mu-contact-form" },
+                               remote: true do |f| %>
                     <div class="form-group">
-                      <label for="name">Your Name</label>
-                      <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                      <%= f.label :name, 'Your Name', for: "name" %>
+                      <%= f.text_field :name, class: "form-control", id: "name", placeholder: "Name", required: true %>
                     </div>
                     <div class="form-group">
-                      <label for="email">Email address</label>
-                      <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                      <%= f.label :email, 'Email address', for: "email" %>
+                      <%= f.email_field :email, class: "form-control", id: "email", placeholder: "Email", required: true %>
                     </div>
                     <div class="form-group">
-                      <label for="subject">Subject</label>
-                      <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                      <%= f.label :subject, 'Subject', for: "subject" %>
+                      <%= f.text_field :subject, class: "form-control", id: "subject", placeholder: "Subject", required: true %>
                     </div>
                     <div class="form-group">
-                      <label for="message">Message</label>
-                      <textarea class="form-control" id="message" name="message"  cols="30" rows="10" placeholder="Type Your Message" required></textarea>
+                      <%= f.label :message, 'Message', for: "message" %>
+                      <%= f.text_area :message, class: "form-control", id: "message", cols: "30", rows: "10", placeholder: "Type Your Message", required: true %>
                     </div>
-                    <button type="submit" class="mu-send-btn">Send Message</button>
-                  </form>
+
+                    <%= f.text_field :nickname, style: 'display: none;' %>
+
+                    <%= f.submit 'Send Message', class: "mu-send-btn" %>
+                  <% end %>
                 </div>
               </div>
 
