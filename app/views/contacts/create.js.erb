@@ -1,0 +1,30 @@
+$('#top-menu #contact-link').click();
+
+<% if @contact.errors.any? %>
+  var contact_errors;
+
+  contact_errors = '<ul class="text-danger">' +
+                      <% @contact.errors.full_messages.each do |msg| %>
+                        '<li><%= msg %></li>' +
+                      <% end %>
+                   '</ul>'
+
+  $('#form-messages .text-danger').remove();
+  $('#form-messages').append(contact_errors);
+<% else %>
+  $('#form-messages .text-danger').remove();
+  $('#ajax-contact').trigger('reset');
+<% end %>
+
+<% flash.each do |key, value| %>
+  var flash_errors;
+
+  flash_errors = "<div class='alert alert-<%= key %>'>" +
+                   "<button type='button' class='close' data-dismiss='alert'" +
+                     "aria-hidden='true'>&times; </button>" +
+                   '<strong><%= value %></strong>' +
+                 '</div>'
+
+  $('#form-messages .alert').remove();
+  $('#form-messages').prepend(flash_errors);
+<% end %>

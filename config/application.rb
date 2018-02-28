@@ -30,6 +30,7 @@ module Osteriax
       g.helper false
       g.assets false
       g.skip_routes true
+      g.test_framework nil
     end
   end
 end
