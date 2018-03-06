@@ -840,7 +840,7 @@ RESERVATION SECTION
   color: #555;
 }
 
-.mu-reservation-form button[type="submit"] {
+.mu-reservation-form [type="submit"] {
   border: none;
   margin-top: 20px;
   margin-left: 15px;
