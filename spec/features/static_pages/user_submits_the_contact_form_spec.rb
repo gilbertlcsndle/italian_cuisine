@@ -26,12 +26,6 @@ feature 'User submits the contact form', js: true do
         is_expected.to eq(0)
       end
     end
-
-    scenario 'they will not see the captcha field', js: false do
-      within '#ajax-contact' do
-        expect(page).not_to have_field('contact[nickname]')
-      end
-    end
   end
 
   context 'with valid information' do

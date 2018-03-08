@@ -1,9 +1,9 @@
 class ContactsController < ApplicationController
   def create
-    @contact = Contact.new(params[:contact])
-    @contact.request = request
+    @contact = Contact.new(contact_params)
 
-    if @contact.deliver
+    if @contact.valid?
+      ContactMailer.new_message(@contact).deliver_now
       flash.now[:success] = 'Your message has been sent.'
     else
       flash.now[:danger] = 'There was an error sending your message.'
@@ -15,7 +15,6 @@ class ContactsController < ApplicationController
       params.require(:contact).permit(:name,
                                       :email,
                                       :subject,
-                                      :message,
-                                      :nickname)
+                                      :message)
     end
 end
