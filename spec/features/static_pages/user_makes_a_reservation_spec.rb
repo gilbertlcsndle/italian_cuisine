@@ -1,26 +1,45 @@
 require 'rails_helper'
 
-feature 'User makes a reservation' do
-  scenario 'with invalid input' do
+feature 'User makes a reservation', js: true do
+  background(:each) do
     ActionMailer::Base.deliveries.clear
-
-    reservation = create(:reservation)
-
     visit root_path
+  end
 
+  subject { page }
+
+  scenario 'with invalid input' do
     within '.mu-reservation-form' do
-      fill_in 'Name', ' '
-      fill_in 'Email', 'foobar@example..com'
-      fill_in 'Phone', 'foobar'
-      fill_in 'Guests', '60'
-      fill_in 'Date', reservation.date_time
-      fill_in 'Message', ' '
+      fill_in 'reservation[name]', with: ' '
+      fill_in 'reservation[email]', with: 'foobar@example.com'
+      fill_in 'reservation[phone]', with: 'foobar'
+      select 50, from: 'reservation[number_of_guests]'
+      # fill_in 'reservation[date_time]', with: '2018-11-22 04:32:11'
 
       click_button 'Reservation'
 
-      expect(page).to have_content 'error'
+      is_expected.to have_content 'error'
     end
 
     expect(ActionMailer::Base.deliveries.size).to eq(0)
+  end
+
+  scenario 'with valid input' do
+    within '.mu-reservation-form' do
+      reservation = attributes_for(:reservation)
+
+      fill_in 'reservation[name]', with: reservation[:name]
+      fill_in 'reservation[email]', with: reservation[:email]
+      fill_in 'reservation[phone]', with: reservation[:phone]
+      select reservation[:number_of_guests], from: 'reservation[number_of_guests]'
+      # fill in datetime
+      fill_in 'reservation[message]', with: reservation[:message]
+
+      click_button 'Reservation'
+
+      is_expected.to have_content 'sent'
+    end
+
+    expect(ActionMailer::Base.deliveries.size).to eq(1)
   end
 end

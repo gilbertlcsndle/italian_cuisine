@@ -16,32 +16,38 @@
             <div class="col-md-6">
               <div class="mu-reservation-left">
                 <%= form_for @reservation,
-                             html: { class: "mu-reservation-form" } do |f| %>
+                             html: { class: "mu-reservation-form" },
+                             remote: true do |f| %>
                   <div class="row">
+                    <div class="col-md-12" id='reservation-form-messages'></div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <%= f.text_field :name, class: "form-control",
-                                                placeholder: "Full Name" %>
+                                                placeholder: "Full Name",
+                                                required: true %>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <%= f.email_field :email, class: "form-control",
-                                                  placeholder: "Email" %>
+                                                  placeholder: "Email",
+                                                  required: true %>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <%= f.telephone_field :phone, class: "form-control",
-                                                placeholder: "Phone Number" %>
+                                                placeholder: "Phone Number",
+                                                required: true %>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <%= f.select :number_of_guests,
                                      (10..50).step(10).to_a,
-                                     prompt: 'How Many?',
-                                     class: "form-control" %>
+                                     { prompt: 'How Many?' },
+                                     { class: "form-control",
+                                       required: true } %>
                       </div>
                     </div>
                     <div class="col-md-12">
@@ -49,7 +55,7 @@
                         <%= f.datetime_field :date_time,
                                              min: DateTime.current,
                                              class: "form-control",
-                                             placeholder: "Date" %>
+                                             placeholder: "Date" %> <!-- required -->
                       </div>
                     </div>
                     <div class="col-md-12">

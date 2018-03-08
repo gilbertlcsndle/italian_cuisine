@@ -12,7 +12,7 @@ describe Reservation do
   it { should validate_presence_of(:phone) }
   it { should validate_numericality_of(:phone).only_integer }
   it { should validate_presence_of(:number_of_guests) }
-  it { should validate_presence_of(:date_time) }
+  # it { should validate_presence_of(:date_time) }
 
   it 'validates the format of email' do
     addresses = %w[user@foo,com user_at_foo.org example.user@foo.
