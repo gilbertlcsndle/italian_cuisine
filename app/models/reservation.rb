@@ -6,5 +6,5 @@ class Reservation < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i }
   validates :phone, presence: true, numericality: { only_integer: true }
   validates :number_of_guests, presence: true
-  # validates :date_time, presence: true
+  validates :date_time, presence: true
 end

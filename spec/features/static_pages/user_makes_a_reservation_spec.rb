@@ -14,7 +14,7 @@ feature 'User makes a reservation', js: true do
       fill_in 'reservation[email]', with: 'foobar@example.com'
       fill_in 'reservation[phone]', with: 'foobar'
       select 50, from: 'reservation[number_of_guests]'
-      # fill_in 'reservation[date_time]', with: '2018-11-22 04:32:11'
+      fill_in 'reservation[date_time]', with: DateTime.current.strftime("%m%d%Y\t%I%M%P")
 
       click_button 'Reservation'
 
@@ -32,7 +32,7 @@ feature 'User makes a reservation', js: true do
       fill_in 'reservation[email]', with: reservation[:email]
       fill_in 'reservation[phone]', with: reservation[:phone]
       select reservation[:number_of_guests], from: 'reservation[number_of_guests]'
-      # fill in datetime
+      fill_in 'reservation[date_time]', with: DateTime.current.strftime("%m%d%Y\t%I%M%P")
       fill_in 'reservation[message]', with: reservation[:message]
 
       click_button 'Reservation'
