@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature 'User makes a reservation', js: true do
   background(:each) do
-    ActionMailer::Base.deliveries.clear
     visit root_path
   end
 
@@ -20,8 +19,6 @@ feature 'User makes a reservation', js: true do
 
       is_expected.to have_content 'error'
     end
-
-    expect(ActionMailer::Base.deliveries.size).to eq(0)
   end
 
   scenario 'with valid input' do
@@ -39,7 +36,5 @@ feature 'User makes a reservation', js: true do
 
       is_expected.to have_content 'sent'
     end
-
-    expect(ActionMailer::Base.deliveries.size).to eq(1)
   end
 end
