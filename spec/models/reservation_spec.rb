@@ -23,4 +23,10 @@ describe Reservation do
       expect(reservation).not_to be_valid
     end
   end
+
+  it 'sends details to admin on create' do
+    ActionMailer::Base.deliveries.clear
+    reservation.save
+    expect(ActionMailer::Base.deliveries.size).to eq(1)
+  end
 end
