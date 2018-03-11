@@ -1,5 +1,6 @@
 class Reservation < ApplicationRecord
   after_create :send_details_to_admin
+  after_create { self.status = 'Pending' }
 
   validates :name, presence: true
   validates :email, presence: true,
