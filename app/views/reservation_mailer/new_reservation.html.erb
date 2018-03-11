@@ -2,8 +2,5 @@ Name: <%= @reservation.name %> <br>
 Email: <%= @reservation.email %> <br>
 Phone: <%= @reservation.phone %> <br>
 Number of guests: <%= @reservation.number_of_guests %> <br>
-Date and Time: <%= @reservation.date_time.nil? ?
-                   @reservation.date_time :
-                   @reservation.date_time.strftime('%B %-d, %Y %I:%M %P') %>
-                   <br>
+Date and Time: <%= @reservation.date_time.strftime('%B %-d, %Y %I:%M %P') %><br>
 Message: <%= @reservation.message %>
