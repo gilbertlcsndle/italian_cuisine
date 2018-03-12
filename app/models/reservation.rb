@@ -9,6 +9,14 @@ class Reservation < ApplicationRecord
   validates :number_of_guests, presence: true
   validates :date_time, presence: true
 
+  def confirm
+    update(status: 'Confirmed')
+  end
+
+  def reject
+    update(status: 'Rejected')
+  end
+
   private
     def send_details_to_admin
       ReservationMailer.new_reservation(self).deliver_now

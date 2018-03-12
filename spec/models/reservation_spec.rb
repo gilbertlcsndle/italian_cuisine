@@ -34,4 +34,20 @@ describe Reservation do
     reservation.save
     expect(reservation.status).to eq('Pending')
   end
+
+  context '#confirm' do
+    it "sets status to 'Confirmed'" do
+      reservation.save
+      reservation.confirm
+      expect(reservation.status).to eq('Confirmed')
+    end
+  end
+
+  context '#reject' do
+    it "sets status to 'Rejected'" do
+      reservation.save
+      reservation.reject
+      expect(reservation.status).to eq('Rejected')
+    end
+  end
 end
