@@ -6,7 +6,7 @@ describe ContactMailer do
 
   it 'renders the headers' do
     expect(mail.subject).to eq(contact.subject)
-    expect(mail.to).to eq(['gilbert.lacasandile@gmail.com'])
+    expect(mail.to).to eq(['gilbertlcsndle@gmail.com'])
     expect(mail.from).to eq(['noreply@osteriax.com'])
   end
 

@@ -1,5 +1,5 @@
 class ReservationMailer < ApplicationMailer
-  default to: "Gilbert <gilbert.lacasandile@gmail.com>"
+  default to: "Gilbert <gilbertlcsndle@gmail.com>"
 
   def new_reservation(reservation)
     @reservation = reservation
