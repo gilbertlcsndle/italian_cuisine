@@ -10,7 +10,8 @@ class Reservation < ApplicationRecord
   validates :date_time, presence: true
 
   def confirm
-    update(status: 'Confirmed')
+    update(status: 'Confirmed', payment_status: 'Pending')
+    ReservationMailer.new_payment(self).deliver_now
   end
 
   def reject
