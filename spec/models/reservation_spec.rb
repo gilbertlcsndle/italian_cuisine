@@ -30,9 +30,9 @@ describe Reservation do
     expect(ActionMailer::Base.deliveries.size).to eq(1)
   end
 
-  it "sets status to 'Pending' on create" do
+  it "sets status to 'Pending' on new record" do
     reservation.save
-    expect(reservation.status).to eq('Pending')
+    expect(reservation.reload.status).to eq('Pending')
   end
 
   context '#confirm' do

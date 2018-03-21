@@ -1,6 +1,6 @@
 class Reservation < ApplicationRecord
   after_create :send_details_to_admin
-  after_create { self.status = 'Pending' }
+  before_create :set_status_to_pending
 
   validates :name, presence: true
   validates :email, presence: true,
@@ -19,6 +19,11 @@ class Reservation < ApplicationRecord
   end
 
   private
+
+    def set_status_to_pending
+      self.status = 'Pending'
+    end
+
     def send_details_to_admin
       ReservationMailer.new_reservation(self).deliver_now
     end
