@@ -4,5 +4,4 @@ Reservation.create!(name: 'John Doe',
                     phone: 123456789,
                     number_of_guests: 50,
                     date_time: 1.month.from_now,
-                    message: 'Hello World!',
-                    status: 'Reserved')
+                    message: 'Hello World!')
