@@ -1,15 +1,22 @@
 ActiveAdmin.register Reservation do
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
+  member_action :confirm, method: :put do
+    reservation = Reservation.find(params[:id])
+    reservation.confirm
+    redirect_back fallback_location: root_path
+  end
 
+  index do
+    column :name
+    column :email
+    column :phone
+    column :number_of_guests
+    column :date_time
+    column :status
+    column :payment_status
+    column :created_at
+    column :updated_at
+    actions do |post|
+      item 'Confirm', confirm_admin_reservation_path(post), method: :put
+    end
+  end
 end
