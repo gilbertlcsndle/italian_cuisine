@@ -5,6 +5,10 @@ ActiveAdmin.register Reservation do
     redirect_back fallback_location: root_path
   end
 
+  action_item :confirm, only: :show do
+    link_to 'Confirm', confirm_admin_reservation_path(reservation), method: :put
+  end
+
   index do
     column :name
     column :email
@@ -15,8 +19,6 @@ ActiveAdmin.register Reservation do
     column :payment_status
     column :created_at
     column :updated_at
-    actions do |post|
-      item 'Confirm', confirm_admin_reservation_path(post), method: :put
-    end
+    actions
   end
 end
