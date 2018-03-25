@@ -47,13 +47,6 @@ describe Reservation do
       reservation.confirm
       expect(reservation.payment_status).to eq('Pending')
     end
-
-    it "sends payment to client's email" do
-      reservation.save
-      ActionMailer::Base.deliveries.clear
-      reservation.confirm
-      expect(ActionMailer::Base.deliveries.size).to eq(1)
-    end
   end
 
   context '#reject' do

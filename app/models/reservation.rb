@@ -11,7 +11,6 @@ class Reservation < ApplicationRecord
 
   def confirm
     update(status: 'Confirmed', payment_status: 'Pending')
-    ReservationMailer.new_payment(self).deliver_now
   end
 
   def reject
