@@ -11,6 +11,7 @@ class Reservation < ApplicationRecord
 
   def confirm
     update(status: 'Confirmed')
+    ReservationMailer.confirmed_email(self).deliver_now
   end
 
   def reject

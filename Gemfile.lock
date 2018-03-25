@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/DavyJonesLocker/capybara-email
+  revision: 42644bd640e5842c12f747620128b5cfeb8f522f
+  specs:
+    capybara-email (2.5.0)
+      capybara (~> 2.4)
+      mail
+
+GIT
   remote: https://github.com/laserlemon/figaro
   revision: 8dd678f5075272138acf4b56682b8b1cbcd6ce10
   specs:
@@ -283,6 +291,7 @@ DEPENDENCIES
   activeadmin (~> 1.2, >= 1.2.1)
   byebug
   capybara (~> 2.18)
+  capybara-email!
   coffee-script (~> 2.4, >= 2.4.1)
   database_cleaner (~> 1.6, >= 1.6.2)
   devise (~> 4.4, >= 4.4.3)

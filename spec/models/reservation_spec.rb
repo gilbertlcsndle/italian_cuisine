@@ -36,10 +36,18 @@ describe Reservation do
   end
 
   context '#confirm' do
-    it "sets status to 'Confirmed'" do
+    before(:each) do
       reservation.save
+      ActionMailer::Base.deliveries.clear
       reservation.confirm
+    end
+
+    it "sets status to 'Confirmed'" do
       expect(reservation.status).to eq('Confirmed')
+    end
+
+    it 'sends confirmed email to client' do
+      expect(ActionMailer::Base.deliveries.size).to eq(1)
     end
   end
 

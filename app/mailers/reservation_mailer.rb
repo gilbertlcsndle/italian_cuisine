@@ -12,4 +12,11 @@ class ReservationMailer < ApplicationMailer
     mail subject: 'Your booking request is waiting to be confirmed.',
          to: "#{@reservation.name} <#{@reservation.email}>"
   end
+
+  def confirmed_email(reservation)
+    @reservation = reservation
+
+    mail subject: 'Your booking request has been confirmed.',
+         to: "#{@reservation.name} <#{@reservation.email}>"
+  end
 end
