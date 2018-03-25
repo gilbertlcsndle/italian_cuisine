@@ -50,12 +50,4 @@ describe Reservation do
       expect(ActionMailer::Base.deliveries.size).to eq(1)
     end
   end
-
-  context '#reject' do
-    it "sets status to 'Rejected'" do
-      reservation.save
-      reservation.reject
-      expect(reservation.status).to eq('Rejected')
-    end
-  end
 end

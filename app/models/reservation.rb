@@ -14,10 +14,6 @@ class Reservation < ApplicationRecord
     ReservationMailer.confirmed_email(self).deliver_now
   end
 
-  def reject
-    update(status: 'Rejected')
-  end
-
   private
 
     def set_status_to_pending
