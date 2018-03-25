@@ -21,8 +21,6 @@ ActiveAdmin.register Reservation do
 
   index do
     column :name
-    column :email
-    column :phone
     column :number_of_guests
     column :date_time
     column :status
