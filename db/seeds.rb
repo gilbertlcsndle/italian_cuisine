@@ -1,4 +1,4 @@
-Reservation.skip_callback(:create, :after, :send_details_to_admin)
+Reservation.skip_callback(:create, :after, :send_details_to_admin, :send_notification_to_client)
 Reservation.create!(name: 'John Doe',
                     email: 'johndoe@example.com',
                     phone: 123456789,
@@ -8,6 +8,6 @@ Reservation.create!(name: 'John Doe',
 AdminUser.create!(email: 'admin@example.com',
                   password: 'password',
                   password_confirmation: 'password') if Rails.env.development?
-AdminUser.create!(email: ENV['ADMIN_EMAIL'], 
+AdminUser.create!(email: ENV['ADMIN_EMAIL'],
                   password: ENV['ADMIN_PASSWORD'],
                   password_confirmation: ENV['ADMIN_PASSWORD']) if Rails.env.production?

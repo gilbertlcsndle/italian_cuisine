@@ -24,10 +24,10 @@ describe Reservation do
     end
   end
 
-  it 'sends details to admin on create' do
+  it 'sends notification email to admin and client on create' do
     ActionMailer::Base.deliveries.clear
     reservation.save
-    expect(ActionMailer::Base.deliveries.size).to eq(1)
+    expect(ActionMailer::Base.deliveries.size).to eq(2)
   end
 
   it "sets status to 'Pending' on new record" do

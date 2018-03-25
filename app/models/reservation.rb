@@ -1,5 +1,5 @@
 class Reservation < ApplicationRecord
-  after_create :send_details_to_admin
+  after_create :send_details_to_admin, :send_notification_to_client
   before_create :set_status_to_pending
 
   validates :name, presence: true
@@ -25,5 +25,9 @@ class Reservation < ApplicationRecord
 
     def send_details_to_admin
       ReservationMailer.new_reservation(self).deliver_now
+    end
+
+    def send_notification_to_client
+      ReservationMailer.client_notification(self).deliver_now
     end
 end

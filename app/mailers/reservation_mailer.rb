@@ -1,9 +1,15 @@
 class ReservationMailer < ApplicationMailer
-  default to: "Gilbert <gilbertlcsndle@gmail.com>"
-
   def new_reservation(reservation)
     @reservation = reservation
 
-    mail subject: 'You have a new reservation!'
+    mail subject: 'You have a new reservation!',
+         to: 'Gilbert <gilbertlcsndle@gmail.com>'
+  end
+
+  def client_notification(reservation)
+    @reservation = reservation
+
+    mail subject: 'Your booking request is waiting to be confirmed.',
+         to: "#{@reservation.name} <#{@reservation.email}>"
   end
 end
