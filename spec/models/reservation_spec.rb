@@ -50,4 +50,15 @@ describe Reservation do
       expect(ActionMailer::Base.deliveries.size).to eq(1)
     end
   end
+
+  context "#close" do
+    before(:each) do
+      reservation.save
+      reservation.close
+    end
+
+    it "sets status to 'Closed'" do
+      expect(reservation.status).to eq('Closed')
+    end
+  end
 end

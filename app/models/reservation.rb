@@ -14,6 +14,10 @@ class Reservation < ApplicationRecord
     ReservationMailer.confirmed_email(self).deliver_now
   end
 
+  def close
+    update(status: 'Closed')
+  end
+
   private
 
     def set_status_to_pending
