@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 20180322090758) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
-    t.string "payment_status"
   end
 
 end

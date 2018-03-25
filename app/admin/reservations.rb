@@ -16,7 +16,6 @@ ActiveAdmin.register Reservation do
     column :number_of_guests
     column :date_time
     column :status
-    column :payment_status
     column :created_at
     column :updated_at
     actions

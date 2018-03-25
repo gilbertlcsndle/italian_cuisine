@@ -41,12 +41,6 @@ describe Reservation do
       reservation.confirm
       expect(reservation.status).to eq('Confirmed')
     end
-
-    it "sets payment_status to 'Pending'" do
-      reservation.save
-      reservation.confirm
-      expect(reservation.payment_status).to eq('Pending')
-    end
   end
 
   context '#reject' do
