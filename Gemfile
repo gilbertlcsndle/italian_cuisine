@@ -34,6 +34,7 @@ gem 'gibbon', '~> 3.2'
 gem 'coffee-script', '~> 2.4', '>= 2.4.1'
 gem 'activeadmin', '~> 1.2', '>= 1.2.1'
 gem 'devise', '~> 4.4', '>= 4.4.3'
+gem 'faker', '~> 1.8', '>= 1.8.7'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
