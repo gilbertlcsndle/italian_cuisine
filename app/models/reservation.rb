@@ -1,4 +1,5 @@
 class Reservation < ApplicationRecord
+  before_save { email.downcase! }
   after_create :send_details_to_admin, :send_notification_to_client
   before_create :set_status_to_pending
 

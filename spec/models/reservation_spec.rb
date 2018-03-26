@@ -61,4 +61,11 @@ describe Reservation do
       expect(reservation.status).to eq('Closed')
     end
   end
+
+  it 'saves email in lower case' do
+    mixed_case_email = 'Foo@ExAMPle.CoM'
+    reservation.email = mixed_case_email
+    reservation.save
+    expect(reservation.reload.email).to eq mixed_case_email.downcase
+  end
 end
