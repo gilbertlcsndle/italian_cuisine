@@ -1,5 +1,5 @@
 /** 
-  * Template Name: OsteriaX
+  * Template Name: Italian Cuisine
   * Version: 1 
   * Template Scripts
   * Author: MarkUps
