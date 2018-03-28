@@ -5,12 +5,20 @@
       <div class="col-md-12">
       <div class="mu-footer-area">
         <div class="newsletter-area">
-          <p>Subscribe to our newsletter!</p>
-          <%= form_tag subscribers_path, remote: true, id: 'newsletter_form' do %>
-            <%= email_field_tag 'subscribers[email]', nil, class: 'form-control' %>
+          <div class="mu-title">
+            <span class="mu-subtitle">Subscribe To Our</span>
+            <h2>Newsletter</h2>
+          </div>
+          <p>
+            Join our subscribers list to get the latest news, updates and special
+              offers delivered directly in your inbox.
+          </p>
+
+          <%= form_tag subscribers_path, remote: true, id: 'newsletter_form', class: "mu-reservation-form" do %>
+            <%= email_field_tag 'subscribers[email]', nil, class: 'form-control', placeholder: 'Email address' %>
             <div id='email_validation_msg'>
             </div>
-            <%= submit_tag 'Submit', class: 'btn btn-primary' %>
+            <%= button_tag 'Subscribe', class: 'mu-readmore-btn' %>
           <% end %>
         </div>
         <div class="mu-footer-social">
