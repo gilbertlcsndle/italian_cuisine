@@ -9,7 +9,7 @@ describe ReservationMailer do
     it 'renders the headers' do
       expect(mail.subject).to match('new reservation')
       expect(mail.to).to eq(['gilbertlcsndle@gmail.com'])
-      expect(mail.from).to eq(['noreply@osteriax.com'])
+      expect(mail.from).to eq(['noreply@italiancuisine.com'])
     end
 
     it 'renders the body' do
@@ -28,7 +28,7 @@ describe ReservationMailer do
     it 'renders the headers' do
       expect(mail.subject).to match('waiting')
       expect(mail.to).to eq([reservation.email])
-      expect(mail.from).to eq(['noreply@osteriax.com'])
+      expect(mail.from).to eq(['noreply@italiancuisine.com'])
     end
 
     it 'renders the body' do
@@ -45,7 +45,7 @@ describe ReservationMailer do
     it 'renders the headers' do
       expect(mail.subject).to match('confirmed')
       expect(mail.to).to eq([reservation.email])
-      expect(mail.from).to eq(['noreply@osteriax.com'])
+      expect(mail.from).to eq(['noreply@italiancuisine.com'])
     end
 
     it 'renders the body' do
