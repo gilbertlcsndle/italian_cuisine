@@ -1,12 +1,59 @@
 .newsletter-area {
-  width: 250px;
+  width: 90%;
   margin: auto;
   padding-bottom: 15px;
 
-  p {
-    font-family: "Open Sans", sans-serif;
-    font-size: 16px;
-    letter-spacing: 0.5px;
+  p, h2 {
     color: #fff;
   }
+
+  button[type="submit"] {
+    margin-top: 0;
+    margin-left: 0;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .newsletter-area {
+    width: 350px;
+  }
+}
+
+body {
+  font-family: 'Roboto Slab', serif;
+}
+
+.mu-title .mu-subtitle,
+.mu-top-slider .mu-top-slider-single .mu-top-slider-content .mu-slider-small-title,
+.mu-counter-nav li .mu-single-counter span,
+.mu-opening-hour h2 {
+  font-family: 'Kaushan Script', cursive;
+}
+
+h1, h2, h3, h4, h5, h6,
+.mu-readmore-btn,
+.mu-main-navbar .mu-main-nav,
+.mu-counter-nav li .mu-single-counter h3 span,
+.mu-restaurant-menu li a,
+.mu-testimonial-slider li .mu-testimonial-single .mu-testimonial-bio p,
+.mu-contact-left,
+.mu-footer-copyright p {
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+#mu-footer {
+  background-color: #222;
+}
+#mu-reservation {
+  background-color: #444;
+}
+
+.mu-footer-social a {
+    background-color: transparent;
+    color: #fff;
+}
+
+.mu-main-navbar .navbar-header .navbar-brand {
+  width: inherit;
 }
