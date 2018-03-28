@@ -4,9 +4,32 @@
   padding-bottom: 15px;
 
   p {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 16px;
     letter-spacing: 0.5px;
     color: #fff;
   }
+}
+
+body {
+  font-family: 'Roboto Slab', serif;
+}
+
+.mu-title .mu-subtitle,
+.mu-top-slider .mu-top-slider-single .mu-top-slider-content .mu-slider-small-title,
+.mu-counter-nav li .mu-single-counter span,
+.mu-opening-hour h2 {
+  font-family: 'Kaushan Script', cursive;
+}
+
+h1, h2, h3, h4, h5, h6,
+.mu-readmore-btn,
+.mu-main-navbar .mu-main-nav,
+.mu-counter-nav li .mu-single-counter h3 span,
+.mu-restaurant-menu li a,
+.mu-testimonial-slider li .mu-testimonial-single .mu-testimonial-bio p,
+.mu-contact-left,
+.mu-footer-copyright p {
+  font-family: 'Montserrat', sans-serif;
+
 }
