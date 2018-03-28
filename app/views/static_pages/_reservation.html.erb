@@ -16,7 +16,7 @@
             <div class="col-md-6">
               <div class="mu-reservation-left">
                 <%= form_for @reservation,
-                             html: { class: "mu-reservation-form" },
+                             html: { class: "mu-reservation-form", id: 'reservation-form' },
                              remote: true do |f| %>
                   <div class="row">
                     <div class="col-md-12" id='reservation-form-messages'></div>

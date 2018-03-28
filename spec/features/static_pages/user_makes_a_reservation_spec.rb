@@ -8,7 +8,7 @@ feature 'User makes a reservation', js: true do
   subject { page }
 
   scenario 'with invalid input' do
-    within '.mu-reservation-form' do
+    within '#reservation-form' do
       fill_in 'reservation[name]', with: ' '
       fill_in 'reservation[email]', with: 'foobar@example.com'
       fill_in 'reservation[phone]', with: 'foobar'
@@ -22,7 +22,7 @@ feature 'User makes a reservation', js: true do
   end
 
   scenario 'with valid input' do
-    within '.mu-reservation-form' do
+    within '#reservation-form' do
       reservation = attributes_for(:reservation)
 
       fill_in 'reservation[name]', with: reservation[:name]
