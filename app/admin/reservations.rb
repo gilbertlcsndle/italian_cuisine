@@ -40,9 +40,9 @@ ActiveAdmin.register Reservation do
     column :status do |reservation|
       case reservation.status
       when 'Pending'
-        status_tag reservation.status, :warning
+        status_tag reservation.status, class: 'warning'
       when 'Confirmed'
-        status_tag reservation.status, :ok
+        status_tag reservation.status, class: 'ok'
       when 'Closed'
         status_tag reservation.status
       end
@@ -69,9 +69,9 @@ ActiveAdmin.register Reservation do
       row :status do |reservation|
         case reservation.status
         when 'Pending'
-          status_tag reservation.status, :warning
+          status_tag reservation.status, class: 'warning'
         when 'Confirmed'
-          status_tag reservation.status, :ok
+          status_tag reservation.status, class: 'ok'
         when 'Closed'
           status_tag reservation.status
         end
