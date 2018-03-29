@@ -55,4 +55,34 @@ ActiveAdmin.register Reservation do
     end
     actions
   end
+
+  show do
+    attributes_table do
+      row :name
+      row :email
+      row :phone
+      row :number_of_guests
+      row 'Date', :date_time do |reservation|
+        reservation.date_time.strftime('%B %-d, %Y %I:%M %P')
+      end
+      row :message
+      row :status do |reservation|
+        case reservation.status
+        when 'Pending'
+          status_tag reservation.status, :warning
+        when 'Confirmed'
+          status_tag reservation.status, :ok
+        when 'Closed'
+          status_tag reservation.status
+        end
+      end
+      row :created_at do |reservation|
+        reservation.created_at.strftime('%B %-d, %Y %I:%M %P')
+      end
+      row :updated_at do |reservation|
+        reservation.updated_at.strftime('%B %-d, %Y %I:%M %P')
+      end
+    end
+    active_admin_comments
+  end
 end
