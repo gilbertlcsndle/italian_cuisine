@@ -2,13 +2,13 @@ ActiveAdmin.register Reservation do
   member_action :confirm, method: :put do
     reservation = Reservation.find(params[:id])
     reservation.confirm
-    redirect_back fallback_location: root_path
+    redirect_back fallback_location: admin_reservations_path
   end
 
   member_action :close, method: :put do
     reservation = Reservation.find(params[:id])
     reservation.close
-    redirect_back fallback_location: root_path
+    redirect_back fallback_location: admin_reservations_path
   end
 
   action_item :confirm, only: :show do
