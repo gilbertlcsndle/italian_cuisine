@@ -1,19 +1,19 @@
 $('#top-menu #reservation-link').click();
 
 <% if @reservation.save %>
-  $('#reservation-form-messages .text-danger').remove();
+  $('#reservation-form-messages .alert').remove();
   $('.mu-reservation-form').trigger('reset');
 
   $('#reservation-form-messages').append(
-                                          '<div class="text-danger">' +
+                                          '<div class="alert alert-success">' +
                                             'Your request has been sent.' +
-                                            'Please check your email.' +
+                                            ' Please check your email.' +
                                           '</div>'
                                         );
 <% else %>
   var reservation_errors;
 
-  reservation_errors = '<div class="text-danger">' +
+  reservation_errors = '<div class="alert alert-danger">' +
                          'You have errors, please correct the following:' +
                          '<ul>' +
                            <% @reservation.errors.full_messages.each do |msg| %>
@@ -22,6 +22,6 @@ $('#top-menu #reservation-link').click();
                          '</ul>' +
                         '</div>'
 
-  $('#reservation-form-messages .text-danger').remove();
+  $('#reservation-form-messages .alert').remove();
   $('#reservation-form-messages').append(reservation_errors);
 <% end %>
