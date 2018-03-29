@@ -22,6 +22,7 @@ ActiveAdmin.register Reservation do
   filter :name
   filter :number_of_guests, as: :select
   filter :date_time
+  filter :status, as: :select
   filter :created_at
   filter :updated_at
 
