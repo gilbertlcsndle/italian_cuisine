@@ -87,4 +87,12 @@ ActiveAdmin.register Reservation do
     end
     active_admin_comments
   end
+
+  permit_params :name,
+                :email,
+                :phone,
+                :number_of_guests,
+                :date_time,
+                :message,
+                :status
 end
