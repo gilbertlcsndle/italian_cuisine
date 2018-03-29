@@ -19,6 +19,11 @@ ActiveAdmin.register Reservation do
     link_to 'Close', close_admin_reservation_path(reservation), method: :put
   end
 
+  scope :all, default: true
+  scope :pending
+  scope :confirmed
+  scope :closed
+
   index do
     column :name
     column :number_of_guests

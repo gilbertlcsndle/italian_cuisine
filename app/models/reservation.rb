@@ -10,6 +10,10 @@ class Reservation < ApplicationRecord
   validates :number_of_guests, presence: true
   validates :date_time, presence: true
 
+  scope :pending, -> { where(status: 'Pending') }
+  scope :confirmed, -> { where(status: 'Confirmed') }
+  scope :closed, -> { where(status: 'Closed') }
+
   def confirm
     update(status: 'Confirmed')
     ReservationMailer.confirmed_email(self).deliver_now
