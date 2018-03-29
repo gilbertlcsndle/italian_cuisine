@@ -33,6 +33,22 @@ ActiveAdmin.register Reservation do
   filter :created_at
   filter :updated_at
 
+  batch_action :confirm, confirm: 'Are you sure you want to confirm these reservations?' do |ids|
+    batch_action_collection.find(ids).each do |reservation|
+      reservation.confirm
+    end
+    redirect_back fallback_location: admin_reservations_path,
+      alert: "Successfully confirmed #{ids.count} reservations"
+  end
+
+  batch_action :close, confirm: 'Are you sure you want to close these reservations?' do |ids|
+    batch_action_collection.find(ids).each do |reservation|
+      reservation.close
+    end
+    redirect_back fallback_location: admin_reservations_path,
+      alert: "Successfully closed #{ids.count} reservations"
+  end
+
   index do
     selectable_column
     column :name
