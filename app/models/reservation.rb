@@ -13,6 +13,8 @@ class Reservation < ApplicationRecord
   scope :pending, -> { where(status: 'Pending') }
   scope :confirmed, -> { where(status: 'Confirmed') }
   scope :closed, -> { where(status: 'Closed') }
+  scope :today, -> { where(date_time: Date.today.midnight..Date.today.end_of_day) }
+  scope :upcoming, -> { where.not(date_time: Date.today.midnight..Date.today.end_of_day) }
 
   def confirm
     update(status: 'Confirmed')

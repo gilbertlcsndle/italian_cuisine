@@ -19,6 +19,13 @@ ActiveAdmin.register Reservation do
     link_to 'Close', close_admin_reservation_path(reservation), method: :put
   end
 
+  scope :all, default: true
+  scope :today
+  scope :upcoming
+  scope :pending
+  scope :confirmed
+  scope :closed
+
   filter :name
   filter :number_of_guests, as: :select
   filter :date_time
@@ -26,16 +33,10 @@ ActiveAdmin.register Reservation do
   filter :created_at
   filter :updated_at
 
-  scope :all, default: true
-  scope :pending
-  scope :confirmed
-  scope :closed
-
   index do
     selectable_column
     column :name
     column :number_of_guests
-    column 'Date', :date_time do |reservation|
     column 'Date', :date_time, sortable: :date_time do |reservation|
       reservation.date_time.strftime('%B %-d, %Y %I:%M %P')
     end
