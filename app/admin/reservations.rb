@@ -36,6 +36,7 @@ ActiveAdmin.register Reservation do
     column :name
     column :number_of_guests
     column 'Date', :date_time do |reservation|
+    column 'Date', :date_time, sortable: :date_time do |reservation|
       reservation.date_time.strftime('%B %-d, %Y %I:%M %P')
     end
     column :status do |reservation|
