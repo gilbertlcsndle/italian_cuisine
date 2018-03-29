@@ -31,12 +31,28 @@ ActiveAdmin.register Reservation do
   scope :closed
 
   index do
+    selectable_column
     column :name
     column :number_of_guests
-    column :date_time
-    column :status
-    column :created_at
-    column :updated_at
+    column 'Date', :date_time do |reservation|
+      reservation.date_time.strftime('%B %-d, %Y %I:%M %P')
+    end
+    column :status do |reservation|
+      case reservation.status
+      when 'Pending'
+        status_tag reservation.status, :warning
+      when 'Confirmed'
+        status_tag reservation.status, :ok
+      when 'Closed'
+        status_tag reservation.status
+      end
+    end
+    column :created_at do |reservation|
+      reservation.created_at.strftime('%B %-d, %Y %I:%M %P')
+    end
+    column :updated_at do |reservation|
+      reservation.updated_at.strftime('%B %-d, %Y %I:%M %P')
+    end
     actions
   end
 end
