@@ -16,9 +16,11 @@ class Reservation < ApplicationRecord
   scope :today, -> { where(date_time: Date.today.midnight..Date.today.end_of_day) }
   scope :upcoming, -> { where.not(date_time: Date.today.midnight..Date.today.end_of_day) }
 
-  def confirm
+  def confirm(notify: true)
     update(status: 'Confirmed')
-    ReservationMailer.confirmed_email(self).deliver_now
+    if notify
+      ReservationMailer.confirmed_email(self).deliver_now
+    end
   end
 
   def close
