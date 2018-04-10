@@ -14,11 +14,8 @@ class Reservation < ApplicationRecord
   scope :confirmed, -> { where(status: 'Confirmed') }
   scope :closed, -> { where(status: 'Closed') }
   scope :today, -> { where(date_time: Date.today.midnight..Date.today.end_of_day) }
-
   # show reservations greater than today
-  def self.upcoming
-    where('date_time > ?', Date.today.end_of_day)
-  end
+  scope :upcoming, -> { where('date_time > ?', Date.today.end_of_day) }
 
   def confirm(notify: true)
     update(status: 'Confirmed')
