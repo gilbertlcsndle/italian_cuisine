@@ -68,4 +68,30 @@ describe Reservation do
     reservation.save
     expect(reservation.reload.email).to eq mixed_case_email.downcase
   end
+
+  context ".pending" do
+    it "returns pending reservations" do
+      pending_reservation = create(:reservation)
+
+      expect(Reservation.pending).to include(pending_reservation)
+    end
+  end
+
+  context ".confirmed" do
+    it "returns confirmed reservations" do
+      confirmed_reservation = create(:reservation)
+      confirmed_reservation.confirm
+
+      expect(Reservation.confirmed).to include(confirmed_reservation)
+    end
+  end
+
+  context ".closed" do
+    it "returns closed reservations" do
+      closed_reservation = create(:reservation)
+      closed_reservation.close
+
+      expect(Reservation.closed).to include(closed_reservation)
+    end
+  end
 end
