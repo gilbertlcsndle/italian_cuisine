@@ -70,44 +70,51 @@ describe Reservation do
   end
 
   context ".pending" do
-    it "returns pending reservations" do
-      pending_reservation = create(:reservation)
+    let(:pending_reservation) { create(:reservation) }
+    subject { Reservation.pending }
 
-      expect(Reservation.pending).to include(pending_reservation)
+    it "returns pending reservations" do
+      is_expected.to include(pending_reservation)
     end
   end
 
   context ".confirmed" do
-    it "returns confirmed reservations" do
-      confirmed_reservation = create(:reservation)
-      confirmed_reservation.confirm
+    let(:confirmed_reservation) { create(:reservation) }
+    subject { Reservation.confirmed }
 
-      expect(Reservation.confirmed).to include(confirmed_reservation)
+    before(:each) { confirmed_reservation.confirm }
+
+    it "returns confirmed reservations" do
+      is_expected.to include(confirmed_reservation)
     end
   end
 
   context ".closed" do
-    it "returns closed reservations" do
-      closed_reservation = create(:reservation)
-      closed_reservation.close
+    let(:closed_reservation) { create(:reservation) }
+    subject { Reservation.closed }
 
-      expect(Reservation.closed).to include(closed_reservation)
+    before(:each) { closed_reservation.close }
+
+    it "returns closed reservations" do
+      is_expected.to include(closed_reservation)
     end
   end
 
   context ".today" do
-    it "returns reservations for today" do
-      reservation_today = create(:reservation)
+    let(:reservation_today) { create(:reservation) }
+    subject { Reservation.today }
 
-      expect(Reservation.today).to include(reservation_today)
+    it "returns reservations for today" do
+      is_expected.to include(reservation_today)
     end
   end
 
   context ".upcoming" do
-    it "returns upcoming reservations" do
-      upcoming_reservation = create(:reservation, date_time: 1.day.from_now)
+    let(:upcoming_reservation) { create(:reservation, date_time: 1.day.from_now) }
+    subject { Reservation.upcoming }
 
-      expect(Reservation.upcoming).to include(upcoming_reservation)
+    it "returns upcoming reservations" do
+      is_expected.to include(upcoming_reservation)
     end
   end
 end
