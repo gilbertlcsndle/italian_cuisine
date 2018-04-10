@@ -94,4 +94,20 @@ describe Reservation do
       expect(Reservation.closed).to include(closed_reservation)
     end
   end
+
+  context ".today" do
+    it "returns reservations for today" do
+      reservation_today = create(:reservation)
+
+      expect(Reservation.today).to include(reservation_today)
+    end
+  end
+
+  context ".upcoming" do
+    it "returns upcoming reservations" do
+      upcoming_reservation = create(:reservation, date_time: 1.day.from_now)
+
+      expect(Reservation.upcoming).to include(upcoming_reservation)
+    end
+  end
 end
