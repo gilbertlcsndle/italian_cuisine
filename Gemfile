@@ -30,7 +30,10 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'gibbon', '~> 3.2'
+gem 'coffee-script', '~> 2.4', '>= 2.4.1'
+gem 'activeadmin', '~> 1.2', '>= 1.2.1'
+gem 'devise', '~> 4.4', '>= 4.4.3'
+gem 'faker', '~> 1.8', '>= 1.8.7'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -39,6 +42,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'selenium-webdriver', '~> 3.9'
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
+  gem 'chromedriver-helper', '~> 1.2'
 end
 
 group :development do
@@ -48,11 +52,15 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'letter_opener', '~> 1.6'
 end
 
 group :test do
   gem 'capybara', '~> 2.18'
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
+  gem 'database_cleaner', '~> 1.6', '>= 1.6.2'
+  gem 'launchy', '~> 2.4', '>= 2.4.3'
+  gem 'capybara-email', git: 'https://github.com/DavyJonesLocker/capybara-email'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

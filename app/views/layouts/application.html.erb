@@ -41,6 +41,14 @@
     </a>
     <!-- END SCROLL TOP BUTTON -->
 
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>" id='global-alert'>
+        <button type='button' class='close' data-dismiss='alert'
+          aria-hidden='true'>&times; </button>
+        <%= value %>
+      </div>
+    <% end %>
+
     <%= render 'layouts/header' %>
 
     <%= yield %>

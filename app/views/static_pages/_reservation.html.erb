@@ -15,56 +15,64 @@
 
             <div class="col-md-6">
               <div class="mu-reservation-left">
-                <form class="mu-reservation-form">
+                <%= form_for @reservation,
+                             html: { class: "mu-reservation-form", id: 'reservation-form' },
+                             remote: true do |f| %>
                   <div class="row">
+                    <div class="col-md-12" id='reservation-form-messages'></div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Full Name">
+                        <%= f.text_field :name, class: "form-control",
+                                                placeholder: "Full Name",
+                                                required: true %>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <%= f.email_field :email, class: "form-control",
+                                                  placeholder: "Email",
+                                                  required: true %>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Phone Number">
+                        <%= f.telephone_field :phone, class: "form-control",
+                                                placeholder: "Phone Number",
+                                                required: true %>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <select class="form-control">
-                          <option value="0">How Many?</option>
-                          <option value="1 Person">1 Person</option>
-                          <option value="2 People">2 People</option>
-                          <option value="3 People">3 People</option>
-                          <option value="4 People">4 People</option>
-                          <option value="5 People">5 People</option>
-                          <option value="6 People">6 People</option>
-                          <option value="7 People">7 People</option>
-                          <option value="8 People">8 People</option>
-                          <option value="9 People">9 People</option>
-                          <option value="10 People">10 People</option>
-                        </select>
+                        <%= f.select :number_of_guests,
+                                     (10..50).step(10).to_a,
+                                     { prompt: 'How Many?' },
+                                     { class: "form-control",
+                                       required: true } %>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="datepicker" placeholder="Date">
+                        <%= f.datetime_field :date_time,
+                                             min: DateTime.current,
+                                             class: "form-control",
+                                             placeholder: "Date",
+                                             required: true %>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <textarea class="form-control" cols="30" rows="10" placeholder="Your Message"></textarea>
+                        <%= f.text_area :message,
+                                        class: "form-control",
+                                        cols: "30",
+                                        rows: "10",
+                                        placeholder: "Your Message" %>
                       </div>
                     </div>
-                    <button type="submit" class="mu-readmore-btn">Make Reservation</button>
                   </div>
-                </form>
+                  <%= f.submit 'Make Reservation', class: "mu-readmore-btn" %>
+                <% end %>
               </div>
             </div>
-
             <div class="col-md-5 col-md-offset-1">
               <div class="mu-reservation-right">
                 <div class="mu-opening-hour">
