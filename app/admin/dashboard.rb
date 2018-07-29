@@ -27,7 +27,7 @@ ActiveAdmin.register_page "Dashboard" do
               end
             end
 
-            strong { link_to 'View All', admin_reservations_path }
+            strong { link_to 'View All', admin_reservations_path(scope: 'today') }
           else
             strong { 'No reservations today.' }
           end
@@ -56,7 +56,7 @@ ActiveAdmin.register_page "Dashboard" do
             end
           end
 
-          strong { link_to 'View All', admin_reservations_path }
+          strong { link_to 'View All', admin_reservations_path(scope: 'upcoming') }
         end
       end
     end
@@ -84,7 +84,7 @@ ActiveAdmin.register_page "Dashboard" do
             end
           end
 
-          strong { link_to 'View All', admin_reservations_path }
+          strong { link_to 'View All', admin_reservations_path(scope: 'pending') }
         end
       end
     end
