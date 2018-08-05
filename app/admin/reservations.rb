@@ -1,4 +1,6 @@
 ActiveAdmin.register Reservation do
+  config.sort_order = 'created_at_desc'
+
   member_action :confirm, method: :put do
     reservation = Reservation.find(params[:id])
     reservation.confirm
