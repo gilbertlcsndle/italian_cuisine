@@ -10,7 +10,6 @@ class Reservation < ApplicationRecord
   validates :number_of_guests, presence: true
   validates :date_time, presence: true
 
-  default_scope { order(date_time: :asc) }
   scope :pending, -> { where(status: 'Pending') }
   scope :confirmed, -> { where(status: 'Confirmed') }
   scope :closed, -> { where(status: 'Closed') }
