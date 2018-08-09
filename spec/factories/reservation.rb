@@ -4,7 +4,7 @@ FactoryBot.define do
     sequence(:email) { |n| "guest#{n}@example.com" }
     sequence(:phone) { |n| "123456789#{n}" }
     number_of_guests 50
-    date_time { DateTime.current }
+    date_time { DateTime.current + 1 }
     sequence(:message) { |n| "Message #{n}" }
   end
 end
