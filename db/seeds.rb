@@ -25,9 +25,19 @@ Reservation.upcoming.order('RANDOM()').limit(confirmed_count).each do |reservati
   reservation.confirm(notify: false)
 end
 
-AdminUser.create!(email: 'admin@example.com',
-                  password: 'password',
-                  password_confirmation: 'password') if Rails.env.development?
-AdminUser.create!(email: ENV['ADMIN_EMAIL'],
-                  password: ENV['ADMIN_PASSWORD'],
-                  password_confirmation: ENV['ADMIN_PASSWORD']) if Rails.env.production?
+if Rails.env.development?
+  a = AdminUser.new(email: 'admin@example.com',
+                        password: 'password',
+                        password_confirmation: 'password') 
+    a.skip_confirmation!
+    a.save!
+end
+
+if Rails.env.production?
+  a = AdminUser.new(email: ENV['ADMIN_EMAIL'],
+                    password: ENV['ADMIN_PASSWORD'],
+                    password_confirmation: ENV['ADMIN_PASSWORD']) 
+
+  a.skip_confirmation!
+  a.save!
+end
