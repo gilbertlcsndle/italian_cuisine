@@ -1,12 +1,13 @@
 Reservation.skip_callback(:create, :after, :send_details_to_admin, :send_notification_to_client)
 50.times do
   name = Faker::Name.name
-  Reservation.create!(name: name,
+  r = Reservation.new(name: name,
                       email: "#{name.parameterize(separator: '_')}@example.com",
                       phone: "09#{(0..8).to_a.shuffle[0..8].join}".to_i,
                       number_of_guests: (10..50).step(10).to_a.shuffle.first,
                       date_time:  Faker::Time.between(DateTime.now - 2, 30.days.from_now),
                       message: Faker::Hipster.paragraph)
+  r.save!(validate: false)
 end
 
 # close all reservations last two days and today
