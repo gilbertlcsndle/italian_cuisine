@@ -114,7 +114,8 @@ ActiveAdmin.register Reservation do
       input :phone
       input :number_of_guests, as: :select, collection: (10..50).step(10).to_a,
                                             prompt: 'How Many?'
-      input :date_time, start_year: DateTime.current.year,  
+      input :date_time, label: 'Date', 
+                        start_year: DateTime.current.year,  
                         order: [:month, :day, :year],
                         prompt: true,
                         include_blank: false
