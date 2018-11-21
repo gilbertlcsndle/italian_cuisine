@@ -106,12 +106,10 @@ describe Reservation do
   end
 
   context ".today" do
-    let(:reservation_today) { create(:reservation) }
+    let(:reservation_today) { create(:reservation, date_time: Date.today.end_of_day) }
     subject { Reservation.today }
 
     it "returns reservations for today" do
-      reservation_today.date_time = DateTime.current
-      reservation_today.save(validate: false)
       is_expected.to include(reservation_today)
     end
   end
