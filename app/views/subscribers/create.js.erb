@@ -1,0 +1,8 @@
+<% if @error.nil? %>
+  $('#newsletter_form').trigger('reset');
+  $('#email_validation_msg').removeClass('text-danger');
+  $('#email_validation_msg').addClass('text-success').html('You have successfully subscribed with your email address');
+<% else %>
+  $('#email_validation_msg').removeClass('text-success');
+  $('#email_validation_msg').addClass('text-danger').html('There was an error registering you.');
+<% end %>

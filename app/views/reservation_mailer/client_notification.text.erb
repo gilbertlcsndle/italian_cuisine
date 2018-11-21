@@ -1,0 +1,12 @@
+Thanks <%= @reservation.name %>,
+
+Your booking request is waiting to be confirmed.
+
+Give us a few moments to make sure that we've got space for you. You will
+receive another email from us soon. If this request was made outside of our
+normal working hours, we may not be able to confirm it until we're open again.
+
+Your request details:
+<%= @reservation.name %>
+<%= @reservation.number_of_guests %> people
+<%= @reservation.date_time.strftime('%B %-d, %Y %I:%M %P') %>
