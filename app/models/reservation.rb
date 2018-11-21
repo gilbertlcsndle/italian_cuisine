@@ -30,7 +30,7 @@ class Reservation < ApplicationRecord
   end
 
   def date_time_cannot_be_in_the_past
-    if date_time.present? && date_time < DateTime.current
+    if date_time.present? && date_time < Time.now
       errors.add(:date_time, "can't be in the past")
     end
   end
