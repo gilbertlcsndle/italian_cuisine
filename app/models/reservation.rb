@@ -9,6 +9,7 @@ class Reservation < ApplicationRecord
   validates :phone, presence: true, numericality: { only_integer: true }
   validates :number_of_guests, presence: true
   validates :date_time, presence: true
+  validate :date_time_cannot_be_in_the_past
 
   scope :pending, -> { where(status: 'Pending') }
   scope :confirmed, -> { where(status: 'Confirmed') }
@@ -26,6 +27,12 @@ class Reservation < ApplicationRecord
 
   def close
     update(status: 'Closed')
+  end
+
+  def date_time_cannot_be_in_the_past
+    if date_time.present? && date_time < Time.now
+      errors.add(:date_time, "can't be in the past")
+    end
   end
 
   private

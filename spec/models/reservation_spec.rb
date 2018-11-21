@@ -24,6 +24,11 @@ describe Reservation do
     end
   end
 
+  it 'validates date_time not to be in the past' do
+    reservation.date_time = DateTime.current - 1
+    expect(reservation).not_to be_valid
+  end
+
   it 'sends notification email to admin and client on create' do
     ActionMailer::Base.deliveries.clear
     reservation.save
@@ -101,7 +106,7 @@ describe Reservation do
   end
 
   context ".today" do
-    let(:reservation_today) { create(:reservation) }
+    let(:reservation_today) { create(:reservation, date_time: Date.today.end_of_day) }
     subject { Reservation.today }
 
     it "returns reservations for today" do

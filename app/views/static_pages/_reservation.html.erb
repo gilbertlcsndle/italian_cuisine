@@ -52,11 +52,16 @@
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <%= f.datetime_field :date_time,
-                                             min: DateTime.current,
-                                             class: "form-control",
-                                             placeholder: "Date",
-                                             required: true %>
+                        <%= f.datetime_select :date_time,
+                                              order: [:month, :day, :year],
+                                              date_separator: '',
+                                              time_separator: '',
+                                              datetime_separator: '',
+                                              prompt: true,
+                                              start_year: DateTime.current.year,
+                                              class: "form-control",
+                                              placeholder: "Date",
+                                              required: true %>
                       </div>
                     </div>
                     <div class="col-md-12">

@@ -107,6 +107,26 @@ ActiveAdmin.register Reservation do
     active_admin_comments
   end
 
+  form do |f|
+    inputs do
+      input :name
+      input :email
+      input :phone
+      input :number_of_guests, as: :select, collection: (10..50).step(10).to_a,
+                                            prompt: 'How Many?'
+      input :date_time, label: 'Date', 
+                        start_year: DateTime.current.year,  
+                        order: [:month, :day, :year],
+                        prompt: true,
+                        include_blank: false
+      input :message
+      input :status, as: :select, collection: ['Pending', 'Confirmed', 'Closed'],
+                                  include_blank: false
+    end
+
+    actions
+  end
+
   permit_params :name,
                 :email,
                 :phone,
