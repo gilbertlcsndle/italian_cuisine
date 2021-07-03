@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.12'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -34,6 +34,7 @@ gem 'coffee-script', '~> 2.4', '>= 2.4.1'
 gem 'activeadmin', '~> 1.2', '>= 1.2.1'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'faker', '~> 1.8', '>= 1.8.7'
+gem 'validates_overlap'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

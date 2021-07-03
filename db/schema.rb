@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180322090758) do
+ActiveRecord::Schema.define(version: 20210703132901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,10 +61,10 @@ ActiveRecord::Schema.define(version: 20180322090758) do
     t.string "phone"
     t.integer "number_of_guests"
     t.datetime "date_time"
-    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+    t.datetime "end_date_time"
   end
 
 end

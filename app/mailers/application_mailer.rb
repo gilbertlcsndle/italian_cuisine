@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "Italian Cuisine <noreply@italiancuisine.com>"
+  default from: "Booking Form <noreply@bookingform.com>"
   layout 'mailer'
 end

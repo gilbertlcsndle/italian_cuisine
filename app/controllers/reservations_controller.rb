@@ -10,6 +10,6 @@ class ReservationsController < ApplicationController
                                           :phone,
                                           :number_of_guests,
                                           :date_time,
-                                          :message)
+                                          :end_date_time)
     end
 end

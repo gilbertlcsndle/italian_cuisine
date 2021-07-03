@@ -12,8 +12,11 @@ ActiveAdmin.register_page "Dashboard" do
                 link_to reservation.name, admin_reservation_path(reservation)
               end
               column :number_of_guests
-              column 'Date', :date_time, sortable: :date_time do |reservation|
+              column 'Check in', :date_time, sortable: :date_time do |reservation|
                 reservation.date_time.strftime('%B %-d, %Y %I:%M %P')
+              end
+              column 'Check out', :end_date_time, sortable: :end_date_time do |reservation|
+                reservation.end_date_time.strftime('%B %-d, %Y %I:%M %P')
               end
               column :status do |reservation|
                 case reservation.status
@@ -42,8 +45,11 @@ ActiveAdmin.register_page "Dashboard" do
                 link_to reservation.name, admin_reservation_path(reservation)
               end
               column :number_of_guests
-              column 'Date', :date_time, sortable: :date_time do |reservation|
+              column 'Check in', :date_time, sortable: :date_time do |reservation|
                 reservation.date_time.strftime('%B %-d, %Y %I:%M %P')
+              end
+              column 'Check out', :end_date_time, sortable: :end_date_time do |reservation|
+                reservation.end_date_time.strftime('%B %-d, %Y %I:%M %P')
               end
               column :status do |reservation|
                 case reservation.status
@@ -74,8 +80,11 @@ ActiveAdmin.register_page "Dashboard" do
                 link_to reservation.name, admin_reservation_path(reservation)
               end
               column :number_of_guests
-              column 'Date', :date_time, sortable: :date_time do |reservation|
+              column 'Check in', :date_time, sortable: :date_time do |reservation|
                 reservation.date_time.strftime('%B %-d, %Y %I:%M %P')
+              end
+              column 'Check out', :end_date_time, sortable: :end_date_time do |reservation|
+                reservation.end_date_time.strftime('%B %-d, %Y %I:%M %P')
               end
               column :status do |reservation|
                 case reservation.status

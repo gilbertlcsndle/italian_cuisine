@@ -1,112 +1,83 @@
-<!-- Start Reservation section -->
-<section id="mu-reservation">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="mu-reservation-area">
-
-          <div class="mu-title">
-            <span class="mu-subtitle">Make A</span>
-            <h2>Reservation</h2>
+<div id="booking" class="section">
+  <div class="section-center">
+    <div class="container">
+      <div class="row">
+        <div class="booking-form">
+          <div class="booking-bg">
+            <div class="form-header">
+              <h2>Make your reservation</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam numquam at</p>
+              <p>Made with <span style="color: #ffff;">&hearts;</span> by <a href='https://github.com/gilbertlc/' target='_blank' class='gilbertlc'>gilbertlc</a></p>
+            </div>
           </div>
 
-          <div class="mu-reservation-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione quidem autem iusto, perspiciatis, amet, quaerat blanditiis ducimus eius recusandae nisi aut totam alias consectetur et.</p>
-
-            <div class="col-md-6">
-              <div class="mu-reservation-left">
-                <%= form_for @reservation,
-                             html: { class: "mu-reservation-form", id: 'reservation-form' },
-                             remote: true do |f| %>
-                  <div class="row">
-                    <div class="col-md-12" id='reservation-form-messages'></div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <%= f.text_field :name, class: "form-control",
-                                                placeholder: "Full Name",
-                                                required: true %>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <%= f.email_field :email, class: "form-control",
-                                                  placeholder: "Email",
-                                                  required: true %>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <%= f.telephone_field :phone, class: "form-control",
-                                                placeholder: "Phone Number",
-                                                required: true %>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <%= f.select :number_of_guests,
-                                     (10..50).step(10).to_a,
-                                     { prompt: 'How Many?' },
-                                     { class: "form-control",
-                                       required: true } %>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <%= f.datetime_select :date_time,
-                                              order: [:month, :day, :year],
-                                              date_separator: '',
-                                              time_separator: '',
-                                              datetime_separator: '',
-                                              prompt: true,
-                                              start_year: DateTime.current.year,
-                                              class: "form-control",
-                                              placeholder: "Date",
-                                              required: true %>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <%= f.text_area :message,
-                                        class: "form-control",
-                                        cols: "30",
-                                        rows: "10",
-                                        placeholder: "Your Message" %>
-                      </div>
-                    </div>
-                  </div>
-                  <%= f.submit 'Make Reservation', class: "mu-readmore-btn" %>
-                <% end %>
+          <%= form_for @reservation, remote: true do |f| %>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <span class="form-label">Name</span>
+                  <%= f.text_field :name, 
+                    class: 'form-control',
+                    required: true %>
+                </div>
               </div>
-            </div>
-            <div class="col-md-5 col-md-offset-1">
-              <div class="mu-reservation-right">
-                <div class="mu-opening-hour">
-                  <h2>Opening Hours</h2>
-                    <ul class="list-unstyled">
-                      <li>
-                          <p>Monday &amp; Tuesday</p>
-                          <p>9:00 AM - 4:00 PM</p>
-                      </li>
-                      <li>
-                          <p>Wednesday &amp; Thursday</p>
-                          <p>9:00 AM - Midnight</p>
-                      </li>
-                      <li>
-                          <p>Friday &amp; Saturday</p>
-                          <p>9:00 AM - Midnight</p>
-                      </li>
-                      <li>
-                          <p>Sunday</p>
-                          <p>9:00 AM - 11:00 PM</p>
-                      </li>
-                    </ul>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <span class="form-label">Email</span>
+                  <%= f.email_field :email, 
+                    class: 'form-control',
+                    required: true %>
                 </div>
               </div>
             </div>
-          </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <span class="form-label">Phone Number</span>
+                  <%= f.telephone_field :phone, 
+                    class: 'form-control',
+                    required: true %>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <span class="form-label">Guests</span>
+                  <%= f.select :number_of_guests,
+                    (1..5).to_a,
+                    { prompt: 'How Many?' },
+                    class: 'form-control',
+                    required: true  %>
+                  <span class="select-arrow"></span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <span class="form-label">Check In</span>
+                  <%= f.datetime_field :date_time, class: 'form-control', required: true %>
+                      
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <span class="form-label">Check Out</span>
+                  <%= f.datetime_field :end_date_time, class: 'form-control', required: true %>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div id="reservation-form-messages"></div>
+              </div>
+            </div>
+            <div class="form-btn">
+              <%= f.submit 'Check availability', class: 'submit-btn' %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-</section>
-<!-- End Reservation section -->
+</div>
+
