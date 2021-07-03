@@ -1,15 +1,12 @@
-$('#top-menu #reservation-link').click();
-
 <% if @reservation.save %>
+  $('form').trigger('reset');
   $('#reservation-form-messages .alert').remove();
-  $('.mu-reservation-form').trigger('reset');
-
   $('#reservation-form-messages').append(
-                                          '<div class="alert alert-success">' +
-                                            'Your request has been sent.' +
-                                            ' Please check your email.' +
-                                          '</div>'
-                                        );
+    '<div class="alert alert-success">' +
+    'Your request has been sent.' +
+    ' Please check your email.' +
+    '</div>'
+  );
 <% else %>
   var reservation_errors;
 

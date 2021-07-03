@@ -2,5 +2,4 @@ Name: <%= @reservation.name %>
 Email: <%= @reservation.email %>
 Phone: <%= @reservation.phone %>
 Number of guests: <%= @reservation.number_of_guests %>
-Date and Time: <%= @reservation.date_time.strftime('%B %-d, %Y %I:%M %P') %>
-Message: <%= @reservation.message %>
+Date and Time: <%= @reservation.date_time.strftime('%B %-d, %Y %I:%M %P') %> - <%= @reservation.end_date_time.strftime('%B %-d, %Y %I:%M %P') %>

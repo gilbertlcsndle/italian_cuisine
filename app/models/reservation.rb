@@ -8,8 +8,10 @@ class Reservation < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i }
   validates :phone, presence: true, numericality: { only_integer: true }
   validates :number_of_guests, presence: true
-  validates :date_time, presence: true
+  validates :date_time, presence: true, uniqueness: true
   validate :date_time_cannot_be_in_the_past
+  validates :end_date_time, presence: true, uniqueness: true
+  validates :date_time, :end_date_time, :overlap => {:message_title => "Check in and check out date", :message_content => "not available"}
 
   scope :pending, -> { where(status: 'Pending') }
   scope :confirmed, -> { where(status: 'Confirmed') }
