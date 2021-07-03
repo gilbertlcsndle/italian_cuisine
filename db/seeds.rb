@@ -6,10 +6,9 @@ Reservation.skip_callback(:create, :after, :send_details_to_admin, :send_notific
   r = Reservation.new(name: name,
                       email: "#{name.parameterize(separator: '_')}@example.com",
                       phone: "09#{(0..8).to_a.shuffle[0..8].join}".to_i,
-                      number_of_guests: (10..50).step(10).to_a.shuffle.first,
+                      number_of_guests: (1..5).to_a.shuffle.first,
                       date_time:  date_time,
-                      end_date_time:  end_date_time,
-                      message: Faker::Hipster.paragraph)
+                      end_date_time:  end_date_time)
   r.save!(validate: false)
 end
 
