@@ -3,6 +3,6 @@ Hi <%= @reservation.name %>,
 Your booking request has been confirmed. We look forward to seeing you soon.
 
 Your booking:
-<%= @reservation.name %>
-<%= @reservation.number_of_guests %> people
-<%= @reservation.date_time.strftime('%B %-d, %Y %I:%M %P') %>
+Guests: <%= @reservation.number_of_guests %> 
+Check in: <%= @reservation.date_time.strftime('%B %-d, %Y %I:%M %P') %>
+Check out: <%= @reservation.end_date_time.strftime('%B %-d, %Y %I:%M %P') %>

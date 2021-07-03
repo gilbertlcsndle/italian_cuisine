@@ -31,6 +31,7 @@ ActiveAdmin.register Reservation do
   filter :name
   filter :number_of_guests, as: :select
   filter :date_time
+  filter :end_date_time
   filter :status, as: :select
   filter :created_at
   filter :updated_at
@@ -55,8 +56,11 @@ ActiveAdmin.register Reservation do
     selectable_column
     column :name
     column :number_of_guests
-    column 'Date', :date_time, sortable: :date_time do |reservation|
+    column 'Check in', :date_time, sortable: :date_time do |reservation|
       reservation.date_time.strftime('%B %-d, %Y %I:%M %P')
+    end
+    column 'Check out', :end_date_time, sortable: :end_date_time do |reservation|
+      reservation.end_date_time.strftime('%B %-d, %Y %I:%M %P')
     end
     column :status do |reservation|
       case reservation.status
@@ -83,10 +87,12 @@ ActiveAdmin.register Reservation do
       row :email
       row :phone
       row :number_of_guests
-      row 'Date', :date_time do |reservation|
+      row 'Check in', :date_time do |reservation|
         reservation.date_time.strftime('%B %-d, %Y %I:%M %P')
       end
-      row :message
+      row 'Check out', :end_date_time do |reservation|
+        reservation.end_date_time.strftime('%B %-d, %Y %I:%M %P')
+      end
       row :status do |reservation|
         case reservation.status
         when 'Pending'
@@ -114,12 +120,16 @@ ActiveAdmin.register Reservation do
       input :phone
       input :number_of_guests, as: :select, collection: (10..50).step(10).to_a,
                                             prompt: 'How Many?'
-      input :date_time, label: 'Date', 
+      input :date_time, label: 'Check in', 
                         start_year: DateTime.current.year,  
                         order: [:month, :day, :year],
                         prompt: true,
                         include_blank: false
-      input :message
+      input :end_date_time, label: 'Check out', 
+                        start_year: DateTime.current.year,  
+                        order: [:month, :day, :year],
+                        prompt: true,
+                        include_blank: false
       input :status, as: :select, collection: ['Pending', 'Confirmed', 'Closed'],
                                   include_blank: false
     end
@@ -132,6 +142,6 @@ ActiveAdmin.register Reservation do
                 :phone,
                 :number_of_guests,
                 :date_time,
-                :message,
+                :end_date_time,
                 :status
 end

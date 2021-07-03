@@ -7,6 +7,6 @@ receive another email from us soon. If this request was made outside of our
 normal working hours, we may not be able to confirm it until we're open again.
 
 Your request details:
-<%= @reservation.name %>
-<%= @reservation.number_of_guests %> people
-<%= @reservation.date_time.strftime('%B %-d, %Y %I:%M %P') %>
+Guests: <%= @reservation.number_of_guests %>
+Check in: <%= @reservation.date_time.strftime('%B %-d, %Y %I:%M %P') %>
+Check out: <%= @reservation.end_date_time.strftime('%B %-d, %Y %I:%M %P') %>
