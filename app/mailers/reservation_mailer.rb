@@ -3,7 +3,7 @@ class ReservationMailer < ApplicationMailer
     @reservation = reservation
 
     mail subject: 'You have a new reservation!',
-         to: 'Gilbert <gilbertlcsndle@gmail.com>'
+         to: "Admin <#{ENV['GMAIL_USERNAME']}>"
   end
 
   def client_notification(reservation)
