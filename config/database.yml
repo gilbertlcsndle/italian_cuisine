@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: italian_cuisine_production
-  username: italian_cuisine
-  password: <%= ENV['ITALIAN_CUISINE_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DATABASE_URL'] %>
+  # username: italian_cuisine
+  # password: <%= ENV['ITALIAN_CUISINE_DATABASE_PASSWORD'] %>
