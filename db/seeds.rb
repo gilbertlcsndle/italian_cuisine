@@ -1,7 +1,8 @@
 Reservation.skip_callback(:create, :after, :send_details_to_admin, :send_notification_to_client)
+
+date_time = DateTime.now.next_month
 50.times do
   name = Faker::Name.name
-  date_time = Faker::Time.between(DateTime.now - 2, 30.days.from_now)
   end_date_time = 7.day.from_now(date_time) 
   r = Reservation.new(name: name,
                       email: "#{name.parameterize(separator: '_')}@example.com",
@@ -10,20 +11,11 @@ Reservation.skip_callback(:create, :after, :send_details_to_admin, :send_notific
                       date_time:  date_time,
                       end_date_time:  end_date_time)
   r.save!(validate: false)
+
+  date_time = date_time.next_month
 end
 
-# close all reservations last two days and today
-this = Date.today
-last_two = Date.today - 2
-
-Reservation.where(date_time: last_two.midnight..this.end_of_day).each do |reservation|
-  reservation.close
-end
-
-# confirm some upcoming reservation
-confirmed_count = (5..Reservation.upcoming.count).to_a.shuffle.first
-
-Reservation.upcoming.order('RANDOM()').limit(confirmed_count).each do |reservation|
+Reservation.upcoming.limit(25).each do |reservation|
   reservation.confirm(notify: false)
 end
 

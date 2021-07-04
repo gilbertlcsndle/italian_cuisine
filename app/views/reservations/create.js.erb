@@ -1,6 +1,11 @@
+setTimeout(() => {
+
+document.querySelector('.submit-btn').innerHTML = 'Check availability';
+}, 500)
+$('#reservation-form-messages .alert').remove();
+
 <% if @reservation.save %>
   $('form').trigger('reset');
-  $('#reservation-form-messages .alert').remove();
   $('#reservation-form-messages').append(
     '<div class="alert alert-success">' +
     'Your request has been sent.' +
@@ -19,6 +24,7 @@
                          '</ul>' +
                         '</div>'
 
-  $('#reservation-form-messages .alert').remove();
-  $('#reservation-form-messages').append(reservation_errors);
+  setTimeout(() => {
+    $('#reservation-form-messages').append(reservation_errors);
+  }, 500)
 <% end %>
